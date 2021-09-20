@@ -1,0 +1,12 @@
+[submodule "lib/ESP32_BLE_keyboard"]
+	path = lib/esp32_ble_keyboard
+	url = https://github.com/T-vK/ESP32-BLE-Keyboard.git
+[submodule "lib/gmp-ino"]
+	path = lib/gmp-ino
+	url = https://github.com/CAFxX/gmp-ino
+[submodule "lib/esp32_ble_keyboard"]
+	path = lib/esp32_ble_keyboard
+	url = https://github.com/T-vK/ESP32-BLE-Keyboard.git
+[submodule "lib/Adafruit_NeoPixel"]
+	path = lib/Adafruit_NeoPixel
+	url = https://github.com/adafruit/Adafruit_NeoPixel.git
