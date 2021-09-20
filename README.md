@@ -46,7 +46,11 @@ Translated with www.DeepL.com/Translator (free version)
 
 GPL v3
 
+ESP32 BLE Keyboard Libraries のライセンスが明らかになった場合には、LGPL v3 に変更します。
+
 ## Semantics 回路図
+
+[./docs/semantics.pdf](./docs/semantics.pdf)
 
 ## Libraries
 
