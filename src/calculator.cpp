@@ -138,9 +138,7 @@ void parse_input(char *input, int input_length, mpq_t *num)
         }
         input[input_length + decimal_size + 1] = '\0';
     }
-    wprintf("@@10 [%s]\n", input);
     mpq_set_str(*num, input, 10);
-    wprintf("@@11 [");
     print_mpq(num);
     wprintf("]\n");
 }
@@ -286,7 +284,6 @@ void Calculator::type_operation(int key)
     }
     char *text = (char *)malloc(128);
     mpq_get_str(text, 10, this->current);
-    wprintf("@@4 [%s]\n", text);
     switch (key)
     {
     case KC_NUM_PLUS:
@@ -413,7 +410,6 @@ void mpq_to_string(mpq_t *num, char *line)
         line[i] = ' ';
     }
     line[display_length] = '\0';
-    wprintf("@@00[");
     print_mpq(num);
     wprintf("]\n");
     mpq_get_num(_buf_num, *num);
@@ -427,11 +423,9 @@ void mpq_to_string(mpq_t *num, char *line)
         mpz_neg(_buf_out, _buf_num);
         mpz_set(_buf_num, _buf_out);
     }
-    wprintf("@@01[");
     print_mpz(&_buf_num);
     wprintf("]\n");
     mpq_get_den(_buf_den, *num);
-    wprintf("@@02[");
     print_mpz(&_buf_den);
     wprintf("]\n");
     if (sgn < 0)
@@ -442,12 +436,10 @@ void mpq_to_string(mpq_t *num, char *line)
     {
         mpz_mul(_buf_out, _buf_num, _buf_shift);
     }
-    wprintf("@@03[");
     print_mpz(&_buf_out);
     wprintf("]\n");
     mpz_set(_buf_num, _buf_out);
     mpz_fdiv_q(_buf_out, _buf_num, _buf_den);
-    wprintf("@@05[");
     print_mpz(&_buf_out);
     wprintf("]\n");
     int length = 0;
@@ -462,7 +454,6 @@ void mpq_to_string(mpq_t *num, char *line)
         to_float = true;
     }
     mpz_get_str(_b, 10, _buf_out);
-    wprintf("@@06[%s]\n", _b);
     while (1)
     {
         if (_b[length] == '\0')
@@ -489,7 +480,6 @@ void mpq_to_string(mpq_t *num, char *line)
     {
         num_length = length - decimal_length;
     }
-    wprintf("@@07 length=%d num=%d decimal=%d\n", length, num_length, decimal_length);
     _b[length] = '\0';
 
     if (decimal_length == 0)
@@ -525,7 +515,6 @@ void mpq_to_string(mpq_t *num, char *line)
         top_zeros = decimal_length - length + 1;
         space = display_length - top_zeros - length - 1;
     }
-    wprintf("@@08 space=%d top_zeros=%d dot=%d to_float=%d\n", space, top_zeros, dot, to_float);
     if (to_float)
     {
         double d = mpq_get_d(*num);
