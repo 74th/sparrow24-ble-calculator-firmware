@@ -15,6 +15,7 @@ void Sparrow24::Setup()
     display_setup();
     keyboard = new BleKeyboard("Sparrow24");
     keyboard->begin();
+    prev_color = 0;
 
     line1 = (char *)malloc(16 + 1);
     line2 = (char *)malloc(16 + 1);
@@ -27,19 +28,39 @@ void Sparrow24::Setup()
     line2[16] = '\0';
 
     mode = MODE_KEYBOARD;
-    set_led_color();
+    show_status_to_led();
 }
 
-void Sparrow24::set_led_color()
+void Sparrow24::show_status_to_led()
 {
+    int next_color = 0;
     switch (mode)
     {
     case MODE_CALCULATOR:
-        set_blue_led();
+        if (keyboard->isConnected())
+        {
+            next_color = LED_COLOR_BLUE;
+        }
+        else
+        {
+            next_color = LED_COLOR_PURPLE;
+        }
         break;
     case MODE_KEYBOARD:
-        set_orange_led();
+        if (keyboard->isConnected())
+        {
+            next_color = LED_COLOR_ORANGE;
+        }
+        else
+        {
+            next_color = LED_COLOR_RED;
+        }
         break;
+    }
+    if (next_color != prev_color)
+    {
+        set_color_led(next_color);
+        prev_color = next_color;
     }
 }
 
@@ -92,6 +113,9 @@ void Sparrow24::send_calculator_result()
 
 void Sparrow24::Loop()
 {
+
+    show_status_to_led();
+
     ButtonEvent ev = read_buttons_event();
     if (!ev.ok)
     {
@@ -106,7 +130,6 @@ void Sparrow24::Loop()
         {
             Serial.printf("mode set keyboard");
             mode = MODE_KEYBOARD;
-            set_led_color();
         }
         break;
     case KC_MODE_CALCULATOR:
@@ -114,7 +137,6 @@ void Sparrow24::Loop()
         {
             Serial.printf("mode set keyboard");
             mode = MODE_CALCULATOR;
-            set_led_color();
         }
         break;
     case KC_SEND:

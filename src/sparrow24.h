@@ -13,10 +13,11 @@ private:
     BleKeyboard *keyboard;
     char *line1, *line2;
     int mode;
+    int prev_color;
     void work_as_keyboard(ButtonEvent ev);
     void work_as_calculator(ButtonEvent ev);
     void send_calculator_result();
-    void set_led_color();
+    void show_status_to_led();
 
 public:
     void Setup();

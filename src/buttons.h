@@ -16,6 +16,17 @@
 
 #define KC_OFFSET 136
 #define KC_SAFE_OFFSET 0
+#define KC_1 0x1e + KC_OFFSET
+#define KC_2 0x1f + KC_OFFSET
+#define KC_3 0x20 + KC_OFFSET
+#define KC_4 0x21 + KC_OFFSET
+#define KC_5 0x22 + KC_OFFSET
+#define KC_6 0x23 + KC_OFFSET
+#define KC_7 0x24 + KC_OFFSET
+#define KC_8 0x25 + KC_OFFSET
+#define KC_9 0x26 + KC_OFFSET
+#define KC_0 0x27 + KC_OFFSET
+#define KC_BACKSPACE 0x28 + KC_OFFSET
 #define KC_NUMLOCK 0x53 + KC_OFFSET
 #define KC_NUM_SLASH 0x54 + KC_OFFSET
 #define KC_NUM_MULTI 0x55 + KC_OFFSET
