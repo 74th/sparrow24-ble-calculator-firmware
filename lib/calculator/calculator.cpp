@@ -1,12 +1,16 @@
 #include "iostream"
 #include "string.h"
-#include "./buttons.h"
-#include "./calculator.h"
+#include "keycode.h"
+#include "calculator.h"
 
 // #include "gmp.h"
 #define DEBUG true
 
+#ifdef ESP_PLATFORM
 #include "gmp-ino.h"
+#else
+#include "gmp.h"
+#endif
 // #define DEBUG false
 
 template <typename... Args>

@@ -1,5 +1,10 @@
 // https://akizukidenshi.com/download/ds/akizuki/so1602awwb-uc-wb-u_akizuki_manu.pdf
 //
+#ifdef ESP_PLATFORM
+#include "Arduino.h"
+#else
+#include "ArduinoFake.h"
+#endif
 #include <Arduino.h>
 #include <Wire.h>
 #include <display.h>

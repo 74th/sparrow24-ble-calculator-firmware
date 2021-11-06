@@ -1,5 +1,9 @@
 #include "buttons.h"
-#include <Arduino.h>
+#ifdef ESP_PLATFORM
+#include "Arduino.h"
+#else
+#include "ArduinoFake.h"
+#endif
 
 uint8_t COL_PINS[N_COLS] = {COL0_PIN, COL1_PIN, COL2_PIN, COL3_PIN};
 uint8_t ROW_PINS[N_ROWS] = {ROW0_PIN, ROW1_PIN, ROW2_PIN, ROW3_PIN, ROW4_PIN, ROW5_PIN};

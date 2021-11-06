@@ -1,4 +1,8 @@
+#ifdef ESP_PLATFORM
 #include "gmp-ino.h"
+#else
+#include "gmp.h"
+#endif
 
 class Calculator
 {

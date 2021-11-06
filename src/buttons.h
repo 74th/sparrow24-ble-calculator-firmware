@@ -1,5 +1,10 @@
 #include "sdkconfig.h"
-#include <Arduino.h>
+#include "keycode.h"
+#ifdef ESP_PLATFORM
+#include "Arduino.h"
+#else
+#include "ArduinoFake.h"
+#endif
 
 #define COL0_PIN 33
 #define COL1_PIN 25
@@ -13,42 +18,6 @@
 #define ROW5_PIN 16
 #define N_COLS 4
 #define N_ROWS 6
-
-#define KC_OFFSET 136
-#define KC_SAFE_OFFSET 0
-#define KC_1 0x1e + KC_OFFSET
-#define KC_2 0x1f + KC_OFFSET
-#define KC_3 0x20 + KC_OFFSET
-#define KC_4 0x21 + KC_OFFSET
-#define KC_5 0x22 + KC_OFFSET
-#define KC_6 0x23 + KC_OFFSET
-#define KC_7 0x24 + KC_OFFSET
-#define KC_8 0x25 + KC_OFFSET
-#define KC_9 0x26 + KC_OFFSET
-#define KC_0 0x27 + KC_OFFSET
-#define KC_BACKSPACE 0x2a + KC_OFFSET
-#define KC_NUMLOCK 0x53 + KC_OFFSET
-#define KC_NUM_SLASH 0x54 + KC_OFFSET
-#define KC_NUM_MULTI 0x55 + KC_OFFSET
-#define KC_NUM_MINUS 0x56 + KC_OFFSET
-#define KC_NUM_PLUS 0x57 + KC_OFFSET
-#define KC_NUM_ENTER 0x58 + KC_OFFSET
-#define KC_NUM_1 0x59 + KC_OFFSET
-#define KC_NUM_2 0x5a + KC_OFFSET
-#define KC_NUM_3 0x5b + KC_OFFSET
-#define KC_NUM_4 0x5c + KC_OFFSET
-#define KC_NUM_5 0x5d + KC_OFFSET
-#define KC_NUM_6 0x5e + KC_OFFSET
-#define KC_NUM_7 0x5f + KC_OFFSET
-#define KC_NUM_8 0x60 + KC_OFFSET
-#define KC_NUM_9 0x61 + KC_OFFSET
-#define KC_NUM_0 0x62 + KC_OFFSET
-#define KC_NUM_DOT 0x63 + KC_OFFSET
-#define KC_NONE 0x00 + KC_SAFE_OFFSET
-#define KC_FN 0x01 + KC_SAFE_OFFSET
-#define KC_SEND 0x02 + KC_SAFE_OFFSET
-#define KC_MODE_CALCULATOR 0x03 + KC_SAFE_OFFSET
-#define KC_MODE_KEYBOARD 0x04 + KC_SAFE_OFFSET
 
 struct ButtonEvent
 {
